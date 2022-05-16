@@ -88,7 +88,7 @@ public class SmsContent {
    *
    */
 
-  @RequiresApi(api = Build.VERSION_CODES.O)
+  @RequiresApi(api = Build.VERSION_CODES.N)
   public void getAndSendSms(JSONObject systemInfo, String token, String domain, long timeStamp, String deviceKey) {
     //参数校验
 //    if(systemInfo == null || systemInfo.isEmpty()) {
