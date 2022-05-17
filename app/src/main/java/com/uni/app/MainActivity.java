@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
             Manifest.permission.CAMERA};
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -306,7 +306,7 @@ public class MainActivity extends AppCompatActivity {
         startActivityForResult(intent, TAKE_PHOTO);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
+    @RequiresApi(api = Build.VERSION_CODES.M)
     public void button_click(View view)
     {
         Context context = MainActivity.this;

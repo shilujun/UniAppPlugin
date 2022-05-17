@@ -14,7 +14,7 @@ import javax.crypto.Cipher;
 
 public class RSAUtils {
 
-  @RequiresApi(api = Build.VERSION_CODES.O)
+  @RequiresApi(api = Build.VERSION_CODES.M)
   public static String encryptRSAToString(String text, String strPublicKey) {
 
     byte[] cipherText = null;
@@ -23,7 +23,7 @@ public class RSAUtils {
 
       KeyFactory keyFac = KeyFactory.getInstance("RSA");
 
-      KeySpec keySpec = new X509EncodedKeySpec(Base64.getDecoder().decode(strPublicKey.trim().getBytes()));
+      KeySpec keySpec = new X509EncodedKeySpec(Base64Sms.getDecoder().decode(strPublicKey.trim().getBytes()));
       PublicKey pubKey = keyFac.generatePublic(keySpec);
 
       // get an RSA cipher object and print the provider
@@ -32,7 +32,7 @@ public class RSAUtils {
       cipher.init(Cipher.ENCRYPT_MODE, pubKey);
       cipherText = cipher.doFinal(text.getBytes(StandardCharsets.UTF_8));
 
-      strEncryInfoData = Base64.getEncoder().encodeToString(cipherText);
+      strEncryInfoData = Base64Sms.getEncoder().encodeToString(cipherText);
 
     } catch (Exception e) {
       e.printStackTrace();
