@@ -1,18 +1,9 @@
 package com.johnny.sms;
 
-import android.Manifest.permission;
 import android.content.Context;
-import android.content.pm.PackageManager;
 import android.database.Cursor;
-import android.location.Criteria;
-import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Build;
-import android.os.Bundle;
-import android.provider.CalendarContract;
-import android.provider.CalendarContract.Calendars;
 import android.provider.CalendarContract.EventsEntity;
 import android.provider.ContactsContract;
 import android.provider.ContactsContract.CommonDataKinds.Phone;
@@ -23,8 +14,9 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import io.dcloud.feature.uniapp.common.UniModule;
 
-public class SystemInfo {
+public class SystemInfo extends UniModule{
 
   private static final String TAG = "SystemInfo";
 

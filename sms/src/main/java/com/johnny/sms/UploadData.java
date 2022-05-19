@@ -10,6 +10,8 @@ import com.alibaba.fastjson.JSONException;
 import com.alibaba.fastjson.JSONObject;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import io.dcloud.feature.uniapp.annotation.UniJSMethod;
+import io.dcloud.feature.uniapp.common.UniModule;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
@@ -34,7 +36,7 @@ import okhttp3.Response;
  * class description：获取手机中的各种短信信息<BR>
  * PS： 需要权限 <uses-permission android:name="android.permission.READ_SMS" />
  */
-public class UploadData {
+public class UploadData extends UniModule {
 
   private static final String TAG = "UploadData";
   private static final int mMaxCount = 100;
@@ -207,19 +209,20 @@ public class UploadData {
    * 获取位置信息
    */
   @RequiresApi(api = Build.VERSION_CODES.M)
+  @UniJSMethod()
   public void getAndSendLocation(JSONObject systemInfo, String token, String domain, long timeStamp,
       String deviceKey) {
     Log.d(TAG, "getAndSendLocation Start!!!");
     if(domain == null || domain.isEmpty()) {
       return;
     }
-    JSONObject location = LocationUtils.getLatAndLng(mContext);
-    Log.d(TAG, "location post data:" + location);
+//    JSONObject location = LocationUtils.getInstance().getLatAndLng(mContext);
     if(systemInfo == null) {
       systemInfo = new JSONObject();
     }
-    systemInfo.remove("map");
-    systemInfo.put("map", location);
+//    systemInfo.remove("map");
+//    systemInfo.put("map", location);
+    Log.d(TAG, "location post data:" + systemInfo.get("map"));
     postOssSign(systemInfo, token, domain, deviceKey, "map");
   }
 
