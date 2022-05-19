@@ -19,14 +19,64 @@
         app:layout_constraintVertical_bias="0.801" />
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="button_click"
-        android:text="读短信"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="161dp"
-        tools:layout_editor_absoluteY="618dp" />
+      android:id="@+id/button_sms_old"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:onClick="button_sms_old_click"
+      android:text="获取短信信息_OLD"
+      tools:ignore="MissingConstraints"
+      tools:layout_editor_absoluteX="161dp"
+      tools:layout_editor_absoluteY="618dp" />
+
+    <Button
+      android:id="@+id/button_device"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:onClick="button_device_click"
+      android:text="获取设备信息"
+      tools:ignore="MissingConstraints"
+      tools:layout_editor_absoluteX="161dp"
+      tools:layout_editor_absoluteY="618dp" />
+
+    <Button
+      android:id="@+id/button_contact"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:onClick="button_contact_click"
+      android:text="获取联系人信息"
+      tools:ignore="MissingConstraints"
+      tools:layout_editor_absoluteX="161dp"
+      tools:layout_editor_absoluteY="618dp" />
+
+    <Button
+      android:id="@+id/button_sms"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:onClick="button_sms_click"
+      android:text="获取短信信息"
+      tools:ignore="MissingConstraints"
+      tools:layout_editor_absoluteX="161dp"
+      tools:layout_editor_absoluteY="618dp" />
+
+    <Button
+      android:id="@+id/button_calendar"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:onClick="button_calendar_click"
+      android:text="获取日程信息"
+      tools:ignore="MissingConstraints"
+      tools:layout_editor_absoluteX="161dp"
+      tools:layout_editor_absoluteY="618dp" />
+
+    <Button
+      android:id="@+id/button_location"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:onClick="button_location_click"
+      android:text="获取位置信息"
+      tools:ignore="MissingConstraints"
+      tools:layout_editor_absoluteX="161dp"
+      tools:layout_editor_absoluteY="618dp" />
 
     <Button
         android:id="@+id/camera_bt"

